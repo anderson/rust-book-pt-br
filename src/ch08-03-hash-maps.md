@@ -92,7 +92,7 @@ que foram transferidos para o hash map com a chamada para `insert`.
 
 Se inserimos referências a valores no hash map, os próprios valores
 não serão movido para o hash map. Os valores que as referências apontam devem ser
-válido pelo menos enquanto o hash map seja válido, no entanto. Falaremos mais
+válidos pelo menos enquanto o hash map seja válido, no entanto. Falaremos mais
 sobre esses problemas na seção Lifetimes do Capítulo 10. 
 
 ### Acessando Valores em um Hash Map
@@ -144,10 +144,10 @@ Blue: 10
 
 Embora o número de chaves e valores sejam crescentes, cada chave individual pode apenas
 tem um valor associado a ele por vez. Quando queremos mudar os dados em
-um hash map, temos que decidir como lidar com o caso quando uma chave já possui uma
+um hash map, temos que decidir como lidar com o caso quando uma chave já possui um
 valor atribuído. Poderíamos optar por substituir o valor antigo pelo novo valor,
 desconsiderando completamente o valor antigo. Poderíamos escolher manter o valor antigo
-e ignorar o novo valor, e apenas adicione o novo valor se a chave ainda *não*
+e ignorar o novo valor, e apenas adicionar o novo valor se a chave ainda *não*
 tem um valor. Ou podemos combinar o valor antigo ao valor novo.
 Vejamos como fazer cada um desses!
 

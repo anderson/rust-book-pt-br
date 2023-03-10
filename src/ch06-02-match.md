@@ -235,14 +235,14 @@ em que `x` é `None`. Nós entramos no `match` e comparamos com o primeiro braç
 None => None,
 ```
 
-Confere! Não há nenhum valor para somar, então o programa pára e retorna o
+Confere! Não há nenhum valor para somar, então o programa para e retorna o
 valor `None` do lado direito do `=>`. Como o primeiro braço já casou, nenhum
 dos demais será testado.
 
 A combinação de enums e a expressão `match` é útil em diversas situações. Você
 verá muito esse padrão em Rust: fazer o `match` de uma enum, associar uma
 variável ao valor embutido, e então executar um código baseado nele. Pode
-parecer complicado no começo, mas uma vez que você se acostume, você vai querer
+parecer complicado no começo, mas uma vez que você se acostuma, você vai querer
 que tivesse isso em todas as linguagens. É, sistematicamente, um favorito dos
 usuários.
 

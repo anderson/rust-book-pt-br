@@ -50,7 +50,7 @@ nesse caso `fn resumo(&self) -> String;`. Depois da assinatura do método ao
 invés de fornecer uma implementação dentro de chaves, nós colocamos um ponto e
 vírgula. Cada tipo que implementa esse trait precisa então fornecer seu próprio
 comportamento customizado para o corpo do método, mas o compilador vai reforçar
-que qualquer qualquer tipo que tenha o trait `Resumir` terá o método `resumo`
+que qualquer tipo que tenha o trait `Resumir` terá o método `resumo`
 definido para ele com esse exata assinatura.
 
 Um trait pode ter vários métodos no seu corpo, com os métodos das assinaturas
@@ -58,7 +58,7 @@ listados um por linha e cada linha terminando com um ponto e vírgula.
 
 ### Implementando um Trait em um Tipo
 
-Agora que deifnimos o trait `Resumir`, podemos implementa-lo nos tipos do nosso
+Agora que definimos o trait `Resumir`, podemos implementá-lo nos tipos do nosso
 agregador de mídias que queremos que tenham esse comportamento. A Listagem 
 10-13 mostra uma implementação do trait `Resumir` no struct `ArtigoNotícia` que
 possui o título, o autor e a localização para criar e retornar o valor de 
@@ -87,7 +87,7 @@ impl Resumir for ArtigoDeNoticia {
 }
 
 pub struct Tweet {
-    pub nomeusuario: String,
+    pub nome_usuario: String,
     pub conteudo: String,
     pub resposta: bool,
     pub retweet: bool,
@@ -95,7 +95,7 @@ pub struct Tweet {
 
 impl Resumir for Tweet {
     fn resumo(&self) -> String {
-        format!("{}: {}", self.nomeusuario, self.conteudo)
+        format!("{}: {}", self.nome_usuario, self.conteudo)
     }
 }
 ```
@@ -118,17 +118,17 @@ são parte de um trait:
 
 ```rust,ignore
 let tweet = Tweet {
-    nomeUsuario: String::from("horse_ebooks"),
-    conteudo: String::from("claro, como vocês provavelmente já sabem, 
+    nome_usuario: String::from("horse_ebooks"),
+    conteudo: String::from("claro, como vocês provavelmente já sabem,
     pessoas"),
     resposta: false,
     retweet: false,
 };
 
-println!("1 novo tweet: {}", tweet.summary());
+println!("1 novo tweet: {}", tweet.resumo());
 ```
 
-Isso irá imprimir `1 novo tweet: claro, como vocês provavelmente já sabem,
+Isso irá imprimir `1 novo tweet: horse_ebooks: claro, como vocês provavelmente já sabem,
 pessoas`
 
 Note que porque nós definimos o trait `Resumir` e os tipos `ArtigoDeNoticia` e

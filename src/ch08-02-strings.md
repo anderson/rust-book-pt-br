@@ -216,7 +216,7 @@ também não incide ownership em nenhum dos seus parâmetros.
 
 ### Indexação em Strings
 
-Em muitas outras linguagens, acessar caracteres individuais em uma string por
+Em muitas outras linguagens, acessar caracteres individuais em uma string
 referenciando por índice é uma operação válida e comum. Em Rust, no entanto, se
 nós tentamos acessar partes de uma `String` usando sintaxe de indexação, vamos ter um erro.
 Ou seja, este código:
@@ -277,7 +277,7 @@ si. Retornar `208` provavelmente não é o que uma pessoa gostaria se eles pedis
 a primeira letra desta string, mas esse é o único dado que Rust tem no byte
 de índice 0. O retorno do valor do byte provavelmente não é o que as pessoas querem, mesmo com
 caracteres contendo acentuação: `&"hello"[0]` retornaria `104`, não` h`. Para evitar o
-retornando um valor inesperado e causando erros que podem não ser descobertos
+retorno de um valor inesperado causando erros que podem não ser descobertos
 imediatamente, Rust escolhe não compilar este código e previne
 mal-entendidos anteriormente.
 

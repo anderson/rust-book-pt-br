@@ -255,7 +255,7 @@ fn main() {
 
 Nós usamos `expect` da mesma maneira que `unwrap`: para retornar o *handle* de arquivo
 ou chamar a macro de `panic!`. A mensagem de erro usada por `expect` na sua chamada
-de `panic!` será o parâmtero que passamos para `expect` em vez da mensagem padrão
+de `panic!` será o parâmetro que passamos para `expect` em vez da mensagem padrão
 que o `unwrap` usa. Aqui está como ela aparece:
 
 ```text
@@ -345,7 +345,7 @@ contém um nome de usuário ou um valor de `Err` que contém um `io::Error`. Nó
 não sabemos o que o código que chamou nossa função fará com esses valores. Se o 
 código que chamou recebe um valor de `Err`, ele poderia chamar `panic!` e causar
 um crash, usar um nome de usuário padrão, ou procurar o nome de usuário em outro
-lugar que não um arquivo, por exemplo. Nós não temos informação o suficiente sobre
+lugar que não é um arquivo, por exemplo. Nós não temos informação o suficiente sobre
 o que o código que chamou está de fato tentando fazer, então propagamos toda a 
 informação de sucesso ou erro para cima para que ele a trate apropriadamente.
 

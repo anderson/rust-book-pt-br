@@ -1,6 +1,6 @@
 ## Validating References with Lifetimes
 
-Quandos falamos sobre referêcias no Capítulo 4, nós deixamos de fora um detalhe
+Quandos falamos sobre referências no Capítulo 4, nós deixamos de fora um detalhe
 importante: toda referência em Rust tem um _lifetime_, que é o escopo no qual
 aquela referência é válida. A maior parte das vezes tempos de vida são implícitos e
 inferidos, assim como a maior parte do tempo tipos são inferidos. Similarmente
@@ -281,7 +281,7 @@ todas as referências na assinatura como tendo o mesmo tempo de vida, `'a`</span
 Isso compilará e produzirá o resultado que queremos quando usada com a função
 `main` na Listagem 10-21.
 
-A assinatura de função agora diz que pra algum tempo de vida `'a`, a função
+A assinatura de função agora diz que para algum tempo de vida `'a`, a função
 receberá dois parâmetros, ambos serão cortes de string que vivem pelo menos
 tanto quanto o tempo de vida `'a`. A função retornará um corte de string que 
 também vai durar tanto quanto o tempo de vida `'a`. Esse é o contrato que 
@@ -289,7 +289,7 @@ estamos dizendo ao Rust que queremos garantir.
 
 Especificando os parâmetros de tempo de vida nessa assinatura de função, não
 estamos modificando os tempos de vida de quaisquer valores passados ou 
-retornados, mas estamos dizendo que quaisqueres valores que não concordem com
+retornados, mas estamos dizendo que quaisquer valores que não concordem com
 esse contrato devem ser rejeitados pelo verificador de empréstimos. Essa função
 não sabe (ou não precisa saber) exatamente quanto tempo `x` e `y` vão viver,
 apenas precisa saber que existe algum escopo que pode ser substituído por `'a`
@@ -315,9 +315,9 @@ válida tanto quanto for o tempo de vida mais curto de `x` e `y`.
 Vamos ver como isso restringe o uso da função `maior` passando referências que
 tem diferentes tempos de vida concretos. A Listagem 10-25 é um exemplo direto
 que deve corresponder suas intuições de qualquer linguagem: `string1` é válida
-até o final do escopo exterior, `strin2` é válida até o final do escopo, a
-`string2` é válida até o final do escopo interior. Com o verificador de 
-empréstimos aprovando esse código; ele vai compilar e imprimir 
+até o final do escopo exterior, `string2` e a`string2` é válida até o final do 
+escopo interior. Com o verificador de empréstimos aprovando esse código; ele 
+vai compilar e imprimir 
 `A string mais longa é`:
 
 <span class="filename">Nome do arquivo: src/main.rs</span>
@@ -424,7 +424,7 @@ Nesse exemplo, especificamos o tempo de vida do parâmetro `'a` para o parâmetr
 `x` e o tipo de retorno, mas, não para o parâmetro `y`, já que o tempo de vida 
 de `y` não tem qualquer relação com o tempo de vida `x` ou o valor retornado.
 
-Quando retornarmos uma referência de um uma função, o parâmetro de tempo de 
+Quando retornarmos uma referência de um valor em uma função, o parâmetro de tempo de 
 vida para o tipo de retorno precisa combinar o parâmetro do tempo de vida de um
 dos argumentos. Se a referência retornada *não* refere a nenhum dos argumentos,
 a única outra possibilidade é que refira a um valor criado dentro da função, o
@@ -550,7 +550,7 @@ Depois de escrever muito código em Rust, o time de Rust descobriu que os
 programadores de Rust estavam digitando as mesmas anotações de tempo de vida
 de novo e de novo. Essas situações eram previsíveis e seguiam alguns padrões
 determinísticos. O time de Rust programou esses padrões no compilador de código 
-de Rust para que o verificador de empréstimos pode inferir os tempos de vida
+de Rust para que o verificador de empréstimos possa inferir os tempos de vida
 dessas situações sem forçar o programador adicionar essas anotações 
 explicitamente.
 
@@ -572,7 +572,7 @@ correspondem com as suas intenções para como as referências se relacionam uma
 com as outras.
 
 Primeiro, algumas definições: Tempos de vida em parâmetros de funções ou 
-métodos são chamadas *tempos de vida de entrada*, e tempos de vida em valores
+métodos são chamados *tempos de vida de entrada*, e tempos de vida em valores
 de retorno são chamados de *tempos de vida de saída*.
 
 Agora, as regras que o compilador usa para descobrir quais referências de 
@@ -607,7 +607,7 @@ fn primeira_palavra(s: &str) -> &str {
 ```
 
 Então nós (como o compilador) aplicamos a primeira regra, que diz que cada 
-parâmetro tem sem próprio tempo de vida. Nós vamos chama-lo de `'a` como é 
+parâmetro tem seu próprio tempo de vida. Nós vamos chamá-lo de `'a` como é 
 usual, então agora a assinatura é:
 
 ```rust,ignore
@@ -734,7 +734,7 @@ Você pode ver sugestões de usar o tempo de vida `'static` em uma mensagem de
 ajuda de erro, mas antes de especificar `'static` como o tempo de vida para uma
 referência, pense sobre se a referência que você tem é uma que vive todo o 
 tempo de vida do seu programa ou não (ou mesmo se você quer que ele viva tanto,
-se poderia). Na maior parte do tempo, o probléma no código é uma tentativa de 
+se poderia). Na maior parte do tempo, o problema no código é uma tentativa de 
 criar uma referência solta ou uma incompatibilidade dos tempos de vida 
 disponíveis, e a solução é consertar esses problemas, não especificar um tempo
 de vida `'static`.
@@ -783,7 +783,7 @@ código flexível não terá referências soltas. E tudo isso acontece em tempo 
 compilação para que a performace em tempo de execução não seja afetada!
 
 Acredite ou não, há ainda mais para aprender nessas áreas: Capítulo 17 
-discutirá objetos de trait, que são outro modo de usar traits. O Capútulo 19
+discutirá objetos de trait, que são outro modo de usar traits. O Capítulo 19
 vai cobrir cenários mais complexos envolvendo anotações de tempo de vida. O
 Capítulo 20 vai tratar de alguns tipos avançados de características do sistema.
 Em seguida, porém, vamos falar sobre como escrever testes em Rust para que

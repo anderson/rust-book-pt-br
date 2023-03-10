@@ -270,7 +270,7 @@ enum Option<T> {
 
 Em outras palavras, `Option<T>` é um enum genérico do tipo `T`. Ele têm duas
 variantes: `Some`, que contém o valor do tipo `T`, e uma variante `None` que 
-não contém nenhum valor. A biblioteca padrão tem que ter apenas essa deifinição
+não contém nenhum valor. A biblioteca padrão tem que ter apenas essa definição
 para suportar a criação de valores desse enum que pode conter qualquer tipo
 concreto. A ideia de um "um valor opcional" é um conceito mais abstrato que o 
 de um tipo específico, e Rust nos deixa expressar esse conceito abstrato sem 
@@ -339,7 +339,7 @@ sabe se o tipo dentro das chaves angulares em `Ponto` é um tipo genérico ou um
 tipo concreto. Por exemplo, nós poderíamos escolher implementar métodos nas
 instâncias de `Ponto<f32>` ao invés nas de `Ponto` com qualquer tipo genérico.
 A listagem 10-10 mostra que não declaramos nada depois de `impl` nesse caso, já
-que estamos usanod um tipo concreto, `f32`:
+que estamos usando um tipo concreto, `f32`:
 
 ```rust
 # struct Ponto<T> {
@@ -360,7 +360,7 @@ aplica a uma struct com o tipo específico usado pelo parâmetro de tipo genéri
 
 Esse código significa que o tipo `Ponto<f32>` terá um método chamado 
 `distancia_da_origem`, e outras instâncias do `Ponto<T>` onde `T` não é do tipo
-`f32` não terá esse método definido. Esse método quão longe nosso ponto está
+`f32` não terá esse método definido. Esse método calcula quão longe nosso ponto está
 das coordenadas (0.0, 0.0) e usa operações matemáticas que só estão disponíveis
 para tipos de ponto-flutuantes.
 
@@ -408,12 +408,12 @@ No `main`, nós definimos um `Ponto` que tem um `i32` para o `x` (com o valor de
  `5`) e um `f64` para `y` (com o valor de `10.4`). `p2` é um `Ponto` que tem um
 pedaço de string `x` (com o valor `"Ola"`) e um `char` para `y` (com o valor
 `c`). Chamando `mistura` no `p1` com o argumento `p2` nos dá `p3`, que terá um
-`i32` para `x`, já que `x` veio de `p1`. `p3` terá um `char` para `y`, já que 
+`i32` para `x`, já que `x` veio de `p1` e `p3` terá um `char` para `y`, já que 
 `y` veio de `p2`. O `println!` irá imprimir `p3.x = 5, p3.y = c`.
 
 Note que os parâmetro genéricos `T` e `U` são declarados depois de `impl`, já
-que eles vão com a definição do struct. Os parâmetros genéricos `V` e `Ẁ` são
-declarados depois de `fn mistura`, já que elés só são relevantes para esse 
+que eles vão com a definição do struct. Os parâmetros genéricos `V` e `W` são
+declarados depois de `fn mistura`, já que eles só são relevantes para esse 
 método.
 
 ### Desempenho do Código Usando Genéricos
@@ -443,7 +443,7 @@ let float = Some(5.0);
 ```
 
 Quando o Rust compilar esse código, ele vai fazer a monomorfização. O 
-compilador lerá os valores que foram passados para `Option` e ver que temos
+compilador lerá os valores que foram passados para `Option` e verá que temos
 dois tipos de `Option<T>`: um é `i32`, e o outro `f64`. Assim sendo, ele 
 expandirá a definição genérica de `Option<T>` para `Option_i32` e `Option_64`,
 substituindo a definição genérica por definições específicas.
@@ -472,9 +472,9 @@ fn main() {
 ```
 
 Nós podemos escrever códigos não duplicados usando tipos genéricos, e Rust vai
-compila-lo em código que especifica o tipo em cada instância. Isso significa 
+compilá-lo em código que especifica o tipo em cada instância. Isso significa 
 que não pagamos nenhum custo em tempo de processamento para usar tipos 
 genéricos; quando o código roda, ele executa do mesmo modo como executaria se
-tivéssemos duplicado cada definição particular a mão. O proccesso de 
+tivéssemos duplicado cada definição particular a mão. O processo de 
 monomorfização é o que faz os tipos genéricos de Rust serem extremamente 
 eficientes em tempo de processamento.
